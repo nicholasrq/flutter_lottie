@@ -8,31 +8,31 @@ public class TestStreamHandler : FlutterStreamHandler {
       self.event = events
       return nil;
    }
-   
+
    public func onCancel(withArguments arguments: Any?) -> FlutterError? {
       return nil;
    }
 }
 
-class ColorDelegate : NSObject, LOTColorValueDelegate {
+class ColorDelegate : NSObject, ColorValueDelegate {
    var color : CGColor
-   
+
    init(color : CGColor) {
       self.color = color
    }
-   
+
    func color(forFrame currentFrame: CGFloat, startKeyframe: CGFloat, endKeyframe: CGFloat, interpolatedProgress: CGFloat, start startColor: CGColor!, end endColor: CGColor!, currentColor interpolatedColor: CGColor!) -> Unmanaged<CGColor>! {
       return  Unmanaged.passRetained(self.color)
    }
 }
 
-class NumberDelegate : NSObject, LOTNumberValueDelegate {
+class NumberDelegate : NSObject, NumberValueDelegate {
    var n : CGFloat
-   
+
    init(number : CGFloat) {
       self.n = number
    }
-   
+
    func floatValue(forFrame currentFrame: CGFloat, startKeyframe: CGFloat, endKeyframe: CGFloat, interpolatedProgress: CGFloat, startValue: CGFloat, endValue: CGFloat, currentValue interpolatedValue: CGFloat) -> CGFloat {
       return self.n
    }
